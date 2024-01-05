@@ -1,0 +1,188 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 40px;
+}
+
+.breeds-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dog-card {
+  width: 250px;
+  height: 300px;
+  perspective: 1000px; /* Add perspective for the 3D effect */
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px; /* Add space between cards */
+}
+
+.dog-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.dog-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: transform 0.6s ease; /* Add transition for smooth flipping */
+}
+
+.card-front {
+  z-index: 1;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  transform: translateZ(1px); /* Prevents rendering issues in some browsers */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+}
+
+.card-front h2 {
+  margin: 0;
+  padding: 25px; /* Adjust padding as needed */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 90%
+}
+
+.card-front img {
+  max-width: 100%;
+  max-height: 80%; /* Adjust the height as needed */
+  object-fit: cover;
+}
+
+
+
+.card-back {
+  transform: rotateY(180deg);
+  z-index: 0;
+  background-color: #f8f8f8;
+  padding: 10px;
+  color: #333;
+  font-size: 20px;
+  overflow-y:scroll;
+}
+
+.card-back p {
+  margin: 8px 0;
+  font-weight: bold;
+  padding: 5px 15px; /* Padding for each paragraph */
+  font-size: 16px;
+}
+
+
+.card-back p:last-child {
+  margin-bottom: 10px;
+}
+
+.dog-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Style for search input and button */
+#search-input,
+#search-button {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+#search-input {
+  /* Your existing styles for the search input */
+  margin-right: 10px; /* Add right margin to create space between search input and buttons */
+}
+
+#search-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px; /* Add right margin to create space between search input and buttons */
+}
+
+#search-button:hover {
+  background-color: #45a049;
+}
+
+#show-all-button {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+
+.dog-card.is-flipped .card-front {
+  transform: rotateY(180deg);
+}
+
+/* Final state of the flipped card */
+.dog-card.is-flipped .card-back {
+  transform: rotateY(0);
+}
+
+/* Position the buttons horizontally */
+.button-container {
+  display: flex;
+  align-items: center;
+}
